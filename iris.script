@@ -1,0 +1,4 @@
+    // unexpire default passwords
+    set $namespace = "%SYS"
+    do ##class(Security.Users).UnExpireUserPasswords("*")
+    

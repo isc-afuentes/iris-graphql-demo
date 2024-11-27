@@ -1,0 +1,5 @@
+sqlalchemy
+graphene_sqlalchemy
+flask
+flask-graphql
+sqlalchemy-iris
