@@ -1,0 +1,249 @@
+{
+    "info": {
+        "_postman_id": "5acfddeb-4b7b-4d65-99d3-74d3e8fe6fd5",
+        "name": "iris-graphql-demo",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "relay",
+            "item": [
+                {
+                    "name": "employees",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/graphql-relay",
+                            "path": [
+                                "graphql-relay"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "{\n  allEmployees {\n    edges {\n      node {\n        name\n        lastname\n        position\n        department {\n          name\n        }\n      }\n    }\n  }\n}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "employees paginated",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/graphql-relay",
+                            "path": [
+                                "graphql-relay"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "{\n  allEmployees(first: 3) {\n    edges {\n      node {\n        name\n        lastname\n        position\n        department {\n          name\n        }\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "employees filter",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/graphql-relay",
+                            "path": [
+                                "graphql-relay"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "{\n  allEmployees(filter: {position: \"Software Engineer\"}) {\n    edges {\n      node {\n        name\n        lastname\n        position\n      }\n    }\n  }\n}"
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "create employee",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:5000/graphql-relay",
+                            "path": [
+                                "graphql-relay"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "5000"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "graphql",
+                            "graphql": {
+                                "query": "mutation {\n  createEmployee(input: {\n    name: \"Phileas\"\n    lastname: \"Fogg\"\n    position: \"Software Engineer\"\n    hiredon: \"2023-11-27\"\n    departmentId: \"1\"\n  }) {\n    employee {\n      id\n      name\n      lastname\n      position\n      hiredon\n      department {\n        id\n        name\n      }\n    }\n  }\n}\n"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "employees",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:5000/graphql",
+                    "path": [
+                        "graphql"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000"
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{ \"query\": \"{ allEmployees { id name department { name }} }\" }"
+                }
+            }
+        },
+        {
+            "name": "employees filter",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:5000/graphql",
+                    "path": [
+                        "graphql"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000"
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "{\n  allEmployees(hiredAfter: \"2020-01-01\") {\n    name\n    hiredon\n    position\n  }\n}"
+                    }
+                }
+            }
+        },
+        {
+            "name": "create employee",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:5000/graphql",
+                    "path": [
+                        "graphql"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000"
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/graphql-response+json;charset=utf-8, application/json;charset=utf-8"
+                    },
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "graphql",
+                    "graphql": {
+                        "query": "mutation {\n  createEmployee(\n    name: \"John\"\n    lastname: \"Doe\"\n    position: \"Developer\"\n    hiredon: \"2021-11-30\"\n    departmentId: \"1\"\n  ) {\n    employee {\n      id\n      name\n      lastname\n      position\n      hiredon\n      department {\n        name\n      }\n    }\n  }\n}\n"
+                    }
+                }
+            }
+        }
+    ]
+}
