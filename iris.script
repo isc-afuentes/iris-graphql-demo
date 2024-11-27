@@ -1,4 +1,7 @@
     // unexpire default passwords
     set $namespace = "%SYS"
     do ##class(Security.Users).UnExpireUserPasswords("*")
+
+    // import WGSI webapp
+    do ##class(Security.Applications).Import("/opt/irisapp/webapp.xml")
     

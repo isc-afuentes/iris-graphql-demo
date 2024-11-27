@@ -1,7 +1,6 @@
 from sqlalchemy import *
 from sqlalchemy.orm import relationship, declarative_base, Session, scoped_session, sessionmaker, relationship, backref
 
-# Database setup
 engine = create_engine('iris://superuser:SYS@localhost:1972/USER')
 db_session = scoped_session(sessionmaker(bind=engine))
 

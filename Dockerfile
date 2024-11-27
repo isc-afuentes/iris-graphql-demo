@@ -13,6 +13,7 @@ WORKDIR /opt/irisapp
 COPY --chown=irisowner:irisowner src src
 COPY --chown=irisowner:irisowner iris.script iris.script
 COPY --chown=irisowner:irisowner requirements.txt requirements.txt
+COPY --chown=irisowner:irisowner webapp.xml webapp.xml
 
 # install python requirements 
 RUN pip3 install --target /usr/irissys/mgr/python/ -r requirements.txt
