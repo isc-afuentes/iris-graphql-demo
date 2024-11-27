@@ -13,6 +13,7 @@ Example of using GraphQL with InterSystems IRIS with Graphene, SQLAlchemy and Fl
 # Setup
 Run an InterSystems IRIS Community edition instance:
 ```bash
+docker compose build
 docker compose up -d
 ```
 
@@ -38,7 +39,9 @@ python
 
 ```python
 from models import db_session, engine, Base, Department, Employee
+# create tables
 Base.metadata.create_all(bind=engine)
+# create some data
 from app import init_data
 init_data()
 ```
@@ -56,5 +59,9 @@ python app.py
 ```
 
 # Test your GraphQL implementation
-You can import [collection_iris-graphql-demo.json](./collection_iris-graphql-demo.json) in Postman or [ThunderClient for VS Code](https://www.thunderclient.com) and check the output. 
+You can import [collection_iris-graphql-demo.json](./collection_iris-graphql-demo.json) in Postman or [ThunderClient for VS Code](https://www.thunderclient.com) and check the output.
+
+There is also a GraphiQL UI available at http://localhost:5000/graphql
+
+<img src="img/graphql-test.gif" width="1024" />
 
